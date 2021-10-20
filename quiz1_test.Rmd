@@ -1,0 +1,28 @@
+---
+title: "Quiz 1"
+author: "Sam Rozal"
+date: "10/18/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(palmerpenguins)
+library(here)
+library(tidyverse)
+```
+
+
+```{r}
+penguins %>% 
+  group_by(species) %>% 
+  summarize(mean_mass=mean(body_mass_g, na.rm=TRUE),
+            sd_mas=sd(body_mass_g, na.rm = TRUE))
+```
+```{r}
+ggplot(data=penguins, aes(x=species, y=flipper_length_mm)) +
+  geom_jitter(aes(color=species)) +
+  facet_wrap(~island)
+```
+
+
